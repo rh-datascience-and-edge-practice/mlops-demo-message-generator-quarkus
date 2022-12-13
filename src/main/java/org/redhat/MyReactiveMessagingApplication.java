@@ -6,6 +6,12 @@ import org.eclipse.microprofile.reactive.messaging.*;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @ApplicationScoped
@@ -16,15 +22,27 @@ public class MyReactiveMessagingApplication {
     Emitter<String> emitter;
 
     /**
-     * Sends message to the "words-out" channel, can be used from a JAX-RS resource or any bean of your application.
+     * Sends message to the "words-out" channel, can be used from a JAX-RS resource
+     * or any bean of your application.
      * Messages are sent to the broker.
      **/
     void onStart(@Observes StartupEvent ev) {
         Stream.of("Hello", "with", "SmallRye", "reactive", "message").forEach(string -> emitter.send(string));
     }
 
+    // From:
+    // https://stackoverflow.com/questions/60711034/read-txt-file-from-resources-folder-on-maven-quarkus-project-from-docker-contain
+    public void buffer() throws IOException {
+        try (InputStream inputStream = getClass().getResourceAsStream("/iris.data");
+                BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
+            String contents = reader.lines()
+                    .collect(Collectors.joining(System.lineSeparator()));
+        }
+    }
+
     /**
-     * Consume the message from the "words-in" channel, uppercase it and send it to the uppercase channel.
+     * Consume the message from the "words-in" channel, uppercase it and send it to
+     * the uppercase channel.
      * Messages come from the broker.
      **/
     @Incoming("words-in")
