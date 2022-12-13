@@ -1,8 +1,24 @@
-# mlops-demo-message-generator Project
+# mlops-demo-message-generator-quarkus Project
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
+The purpose of this message generator pod is to periodically publish messages containing a single row of data to various kafka topic(s).
 
-If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
+Features of this project:
+* It's configurable via env vars in order to modify: 
+    * Kakfa bootstrap url
+    * Kafka topics
+    * Frequency of message generation in seconds
+* Generate a message to an "inference topic" containing only x data in json format
+* Generate a message to "real results topic" containing both x and y data in json format
+* Be built and published as image to https://quay.io/organization/rhiap
+* Be deployed to the dev, test, and prod namespaces via a helm chart
+
+Acceptance Criteria:
+* Image is built and published to quay organization
+* Automation in place to build and push image to repo (github actions?) or documentation provided to build and push the image to quay
+* Helm charts present to deploy components in mlops-demo-application-gitops repo
+* Application deploys via argo cd to dev, test, and prod namespaces
+
+This project uses Quarkus, the Supersonic Subatomic Java Framework. If you want to learn more about Quarkus, please visit its website: https://quarkus.io/.
 
 ## Running the application in dev mode
 
