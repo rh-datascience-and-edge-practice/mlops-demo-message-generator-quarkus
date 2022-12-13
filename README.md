@@ -13,6 +13,18 @@ You can run your application in dev mode that enables live coding using:
 
 > **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at http://localhost:8080/q/dev/.
 
+## Starting a local instance of Kafka using Docker or Podman
+
+If required, a local instance of a Kafka server can be run using either Docker or Podman:
+
+```shell script
+docker compose up
+```
+
+Once started, there is a Kafdrop UI container that can be accessed using http://localhost:9000
+
+Another alternative is to use a Visual Studio Code Extension such as [Tools for Apache Kafka](https://marketplace.visualstudio.com/items?itemName=jeppeandersen.vscode-kafka) to view the Kafka topic during development phase.
+
 ## Packaging and running the application
 
 The application can be packaged using:
