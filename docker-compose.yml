@@ -1,5 +1,3 @@
-# Abtracted from: https://developer.confluent.io/quickstart/kafka-docker/
-# Alternative: https://redhat-developer-demos.github.io/quarkus-tutorial/quarkus-tutorial/kafka-and-streams.html
 ---
 version: '3'
 services:

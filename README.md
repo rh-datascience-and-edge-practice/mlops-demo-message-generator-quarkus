@@ -21,6 +21,8 @@ If required, a local instance of a Kafka server can be run using either Docker o
 docker compose -f docker-compose.yml up
 ```
 
+> **_NOTE:_**  This docker-compose file was abstracted from: https://developer.confluent.io/quickstart/kafka-docker/. Another alternative to consider is the one found at: https://redhat-developer-demos.github.io/quarkus-tutorial/quarkus-tutorial/kafka-and-streams.html
+
 Once started, there is a Kafdrop UI container that can be accessed using http://localhost:9000
 
 Another alternative is to use a Visual Studio Code Extension such as [Tools for Apache Kafka](https://marketplace.visualstudio.com/items?itemName=jeppeandersen.vscode-kafka) to view the Kafka topic during development phase.
