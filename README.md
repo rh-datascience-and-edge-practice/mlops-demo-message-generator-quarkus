@@ -18,7 +18,7 @@ You can run your application in dev mode that enables live coding using:
 If required, a local instance of a Kafka server can be run using either Docker or Podman:
 
 ```shell script
-docker compose up
+docker compose -f docker-compose.yml up
 ```
 
 Once started, there is a Kafdrop UI container that can be accessed using http://localhost:9000
